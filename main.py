@@ -24,7 +24,7 @@ def get_counter():
 
 @app.get("/about")
 def hello():
-    return HTMLResponse("<h3>Hello!</h3><b>Hostname:</b> ainur <br/>")
+    return HTMLResponse("<h3>Hello, ainur</h3>")
 
 
 if __name__ == '__main__':

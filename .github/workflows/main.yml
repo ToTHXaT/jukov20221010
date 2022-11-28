@@ -42,10 +42,8 @@ jobs:
       - name: Docker push
         run: docker push ${{secrets.DOCKER_USER}}/jukov-task8:latest
 
-      - name: smth
-        run: ls -la
-
-      - run: echo $USER
+      - name: Change permissions
+        run: chown ainur docker-compose.yml
 
 
       - uses: mdallasanta/ssh-scp-deploy@v1.2.0

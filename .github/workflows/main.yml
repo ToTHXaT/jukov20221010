@@ -53,7 +53,7 @@ jobs:
       # Uploading docker-compose file to the target server and launching built containers over ssh
       - uses: mdallasanta/ssh-scp-deploy@v1.2.0
         with:
-          local: './'
+          local: './docker-compose.yml'
           remote: '~/Sites/jukov-task8'                                                 # Remote file path - REQUIRED false - DEFAULT ~/
           host: ${{secrets.HOST}}                                      # Remote server address - REQUIRED true
           port: ${{secrets.PORT}}                                      # Remote server port - REQUIRED false - DEFAULT 22

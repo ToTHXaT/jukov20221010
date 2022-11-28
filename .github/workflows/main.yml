@@ -55,4 +55,4 @@ jobs:
           password: ${{secrets.PASSWORD}}                              # User password - REQUIRED at least one of "password" or "key"
           post_upload: |
             cd ~/Sites/jukov-task8 && 
-            docker-compose up --pull -d  # Command to run via ssh after scp upload - REQUIRED false
+            docker-compose up --pull always -d

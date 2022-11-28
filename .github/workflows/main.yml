@@ -42,15 +42,18 @@ jobs:
       - name: Docker push
         run: docker push ${{secrets.DOCKER_USER}}/jukov-task8:latest
 
-      - name: Deploy to server
-        uses: ilCollez/ssh-scp-deploy@v1.1.0
+
+      - uses: mdallasanta/ssh-scp-deploy@{version}
         with:
-          host: ${{ secrets.HOST }} # "example.com"
-          port: ${{ secrets.PORT }} # 22
-          username: ${{ secrets.USER }} # "user"
-          password: ${{ secrets.PASSWORD }} # "passphrase"
-          files: |
-            docker-compose.yml
-          remote-path: "/home/ainur/Sites/jukov-task8"
-          after-upload: |
-            docker-compose up -d --pull always
+          remote: '~/Sites/jukov-task8'                                                 # Remote file path - REQUIRED false - DEFAULT ~/
+          host: ${{secrets.HOST}}                                      # Remote server address - REQUIRED true
+          port: ${{secrets.PORT}}                                      # Remote server port - REQUIRED false - DEFAULT 22
+          user: ${{secrets.USER}}                                      # Remote server user - REQUIRED true
+          password: ${{secrets.PASSWORD}}                              # User password - REQUIRED at least one of "password" or "key"
+          pre_upload: |
+            cd ~/Sites/jukov-task8 &&
+            docker-compose down || true
+          post_upload: |
+            cd ~/Sites/jukov-task8 && 
+            docker-compose down &&
+            docker-compose up --pull -d  # Command to run via ssh after scp upload - REQUIRED false

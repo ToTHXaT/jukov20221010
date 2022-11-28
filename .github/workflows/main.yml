@@ -52,7 +52,7 @@ jobs:
           password: ${{secrets.PASSWORD}}                              # User password - REQUIRED at least one of "password" or "key"
           pre_upload: |
             cd ~/Sites/jukov-task8 &&
-            docker-compose down || true
+            docker-compose down
           post_upload: |
             cd ~/Sites/jukov-task8 && 
             docker-compose down &&

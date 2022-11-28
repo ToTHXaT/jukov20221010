@@ -45,6 +45,8 @@ jobs:
       - name: smth
         run: ls -la
 
+      - run: echo $USER
+
 
       - uses: mdallasanta/ssh-scp-deploy@v1.2.0
         with:

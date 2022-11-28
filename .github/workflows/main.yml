@@ -43,7 +43,7 @@ jobs:
         run: docker push ${{secrets.DOCKER_USER}}/jukov-task8:latest
 
 
-      - uses: mdallasanta/ssh-scp-deploy@{version}
+      - uses: mdallasanta/ssh-scp-deploy@1.2.0
         with:
           remote: '~/Sites/jukov-task8'                                                 # Remote file path - REQUIRED false - DEFAULT ~/
           host: ${{secrets.HOST}}                                      # Remote server address - REQUIRED true

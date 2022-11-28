@@ -43,8 +43,7 @@ jobs:
         run: docker push ${{secrets.DOCKER_USER}}/jukov-task8:latest
 
       - name: Change permissions
-        run: chown ainur docker-compose.yml
-
+        run: chmod 777 docker-compose.yml
 
       - uses: mdallasanta/ssh-scp-deploy@v1.2.0
         with:

@@ -53,4 +53,4 @@ jobs:
           post_upload: |
             cd ~/Sites/jukov-task8 && 
             docker-compose up --pull -d  # Command to run via ssh after scp upload - REQUIRED false
-          scp_options: -r
+          scp_options: -pr

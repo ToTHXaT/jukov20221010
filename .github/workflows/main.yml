@@ -50,9 +50,8 @@ jobs:
           remote: '~/Sites/jukov-task8'                                                 # Remote file path - REQUIRED false - DEFAULT ~/
           host: ${{secrets.HOST}}                                      # Remote server address - REQUIRED true
           port: ${{secrets.PORT}}                                      # Remote server port - REQUIRED false - DEFAULT 22
-          user: ${{secrets.USER}}                                      # Remote server user - REQUIRED true
+          user: ${{secrets.USERNAME}}                                      # Remote server user - REQUIRED true
           password: ${{secrets.PASSWORD}}                              # User password - REQUIRED at least one of "password" or "key"
           post_upload: |
             cd ~/Sites/jukov-task8 && 
             docker-compose up --pull -d  # Command to run via ssh after scp upload - REQUIRED false
-          scp_options: -pr

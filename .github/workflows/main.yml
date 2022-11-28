@@ -19,6 +19,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.local
+          key: {{ runner.os }}-poetry
 
       - name: Install poetry
         uses: snok/install-poetry@v1

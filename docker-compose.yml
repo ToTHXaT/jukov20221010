@@ -2,9 +2,9 @@ version: '3.9'
 
 services:
   python-app:
-    image: qeyn/jukov-task7:latest
+    image: qeyn/jukov-task8:latest
     ports:
-      - "5000:80"
+      - "0.0.0.0:5000:80"
     environment:
       - PYTHONBUFFERED=1
       - MAX_WORKERS=1

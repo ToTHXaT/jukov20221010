@@ -10,6 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # Installing python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -21,18 +22,22 @@ jobs:
           path: ~/.local
           key: poetry
 
+      # Installing poetry for dependency management
       - name: Install poetry
         uses: snok/install-poetry@v1
         with:
           virtualenvs-create: false
           virtualenvs-in-project: false
 
+      # Installing dependencies
       - name: Install dependencies
         run: poetry install
 
+      # Running tests
       - name: Run tests
         run: pytest .
 
+      # Building and publishing docker image
       - name: Docker login
         run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
 
@@ -45,9 +50,10 @@ jobs:
       - name: Change permissions
         run: chmod 777 docker-compose.yml
 
+      # Uploading docker-compose file to the target server and launching built containers over ssh
       - uses: mdallasanta/ssh-scp-deploy@v1.2.0
         with:
-          local: './docker-compose.yml'
+          local: './'
           remote: '~/Sites/jukov-task8'                                                 # Remote file path - REQUIRED false - DEFAULT ~/
           host: ${{secrets.HOST}}                                      # Remote server address - REQUIRED true
           port: ${{secrets.PORT}}                                      # Remote server port - REQUIRED false - DEFAULT 22

@@ -42,6 +42,9 @@ jobs:
       - name: Docker push
         run: docker push ${{secrets.DOCKER_USER}}/jukov-task8:latest
 
+      - name: smth
+        run: ls -la
+
 
       - uses: mdallasanta/ssh-scp-deploy@v1.2.0
         with:

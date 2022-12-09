@@ -4,11 +4,18 @@ services:
   python-app:
     image: qeyn/jukov-task7:latest
     ports:
-      - "5000:80"
+      - "5010:80"
     environment:
       - PYTHONBUFFERED=1
       - MAX_WORKERS=1
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+    deploy:
+      mode: replicated
+      replicas: 4
+    restart: unless-stopped
+    depends_on:
+      - redis
   redis:
     image: redis:7-alpine
+    restart: unless-stopped
